@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model>
+    <listOfCompartments>
+      <compartment id="compartment" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="Species0" name="Ethanol" compartment="compartment" initialAmount="2.5e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p title="Unit">M</p>
+          </body>
+        </notes>
+      </species>
+      <species id="Species1" name="NAD+" compartment="compartment" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Species2" name="Acetaldehyde" compartment="compartment" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Species3" name="H+" compartment="compartment" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Species4" name="NADH" compartment="compartment" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Species6" name="S-(Hydroxymethyl)glutathione" compartment="compartment" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Species7" name="S-Formylglutathione" compartment="compartment" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="Reaction1" name="[ADH5 oxidises S-HMGSH to S-FGSH]" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p title="Kinetic mechanism type">Michaelis-Menten</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="Species1" stoichiometry="1"/>
+          <speciesReference species="Species6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Species7" stoichiometry="1"/>
+          <speciesReference species="Species3" stoichiometry="1"/>
+          <speciesReference species="Species4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <notes>
+            <body xmlns="http://www.w3.org/1999/xhtml">
+              <p title="Rate equation">Vmax*A/(Km+A)</p>
+            </body>
+          </notes>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vmax </ci>
+                <ci> A </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Km </ci>
+                <ci> A </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="Vmax" value="5e-07">
+              <notes>
+                <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p title="Units">mol*s^(-1)*g^(-1)</p>
+                </body>
+              </notes>
+            </parameter>
+            <parameter id="Km" value="0.0002">
+              <notes>
+                <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p title="Units">M</p>
+                </body>
+              </notes>
+            </parameter>
+            <parameter id="A">
+              <notes>
+                <body xmlns="http://www.w3.org/1999/xhtml">
+                  <p title="Warning">No units/values</p>
+                </body>
+              </notes>
+            </parameter>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
