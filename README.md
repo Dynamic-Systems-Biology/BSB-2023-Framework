@@ -4,8 +4,8 @@ Source code of the framework for hybrid modeling of cell signaling pathways
 ## Components installation 
 ### Linux
 #### Jupyter notebook
-In the console:
-	apt-get install python3
+In the console:<br /> <br/> 
+	apt-get install python3<br /> <br/> 
 	python3 -m pip install jupyter
 <br /> <br/> 
 #### Julia 
