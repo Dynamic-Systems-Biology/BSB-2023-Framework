@@ -21,10 +21,10 @@ Jupyter notebook
 <br /> <br/> 
 ### Windows
 #### Jupyter notebook
-Download the Anaconda installer from “https://www.anaconda.com/distribution/”, run it and follow the instructions.
+Download the Anaconda installer from https://www.anaconda.com/distribution/, run it and follow the instructions.
 <br /> <br/> 
 #### Julia 
-Download the Julia installer from “https://julialang.org/downloads/”, run it and follow the instructions.
+Download the Julia installer from https://julialang.org/downloads/, run it and follow the instructions.
 Type "Julia" in the start menu to open the console
 Install the package “IJulia”, in the console:
 using Pkg
