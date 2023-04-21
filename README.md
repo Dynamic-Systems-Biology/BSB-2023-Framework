@@ -4,20 +4,20 @@ Source code of the framework for hybrid modeling of cell signaling pathways
 ## Components installation 
 ### Linux
 #### Jupyter notebook
-In the console:<br /> <br/> 
-	apt-get install python3<br /> <br/> 
-	python3 -m pip install jupyter
+In the console:
+	- apt-get install python3<br /> <br/> 
+	- python3 -m pip install jupyter
 <br /> <br/> 
 #### Julia 
 In the console:
-	apt-get install julia
-	julia
-	using Pkg
-	Pkg.add("IJulia") 
+	- apt-get install julia
+	- julia
+	- using Pkg
+	- Pkg.add("IJulia") 
 <br /> <br/> 
 #### Executing
 In the console:
-Jupyter notebook
+- Jupyter notebook
 <br /> <br/> 
 ### Windows
 #### Jupyter notebook
@@ -27,8 +27,8 @@ Download the Anaconda installer from https://www.anaconda.com/distribution/, run
 Download the Julia installer from https://julialang.org/downloads/, run it and follow the instructions.
 Type "Julia" in the start menu to open the console
 Install the package “IJulia”, in the console:
-using Pkg
-Pkg.add("IJulia")
+- using Pkg
+- Pkg.add("IJulia")
 <br /> <br/> 
 #### Executing
 Run Anaconda via the start menu.
