@@ -1,6 +1,7 @@
 # BSB-2023-Framework
 Source code of the framework for hybrid modeling of cell signaling pathways
 
+
 ## Components installation 
 ### Linux
 #### Jupyter notebook
@@ -8,13 +9,15 @@ In the console:
 	apt-get install python3
 	python3 -m pip install jupyter
 
+
 #### Julia 
 In the console:
 	apt-get install julia
 	julia
 	using Pkg
 	Pkg.add("IJulia") 
-  
+
+
 #### Executing
 In the console:
 Jupyter notebook
