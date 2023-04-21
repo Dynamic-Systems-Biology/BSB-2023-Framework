@@ -35,5 +35,5 @@ Run Anaconda via the start menu.
 In the Anaconda interface, click on “Launch” under Jupyter notebook.
 <br /> <br/> 
 ### Usage guide 
-An interface of Jupyter will be executed in the default browser, search and open the downloaded files directory.
+An interface of Jupyter will be executed in the default browser, search and open the file "Pipeline.ipynb" in the downloaded files directory.
 - Run the cells one by one following the indications contained in the code blocks, making the desired changes (in particular, imported file names, parameters and algorithms used by the functions).
