@@ -60,6 +60,7 @@ In possession of the CSV file, the following procedure should be followed to per
 - sudo apt-get update
 - sudo apt-get upgrade
 - sudo apt-get -y install build-essential openssl libssl-dev libssl1.0 libgl1-mesa-dev libqt5x11extras5
+
 Download the Qt installer from https://www.qt.io/download-qt-installer and execute, in the console.
 - chmod +x qt(...).run
 - /qt(...).run
