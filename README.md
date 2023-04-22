@@ -49,6 +49,8 @@ An interface of Jupyter will be executed in the default browser, search and open
 <br /> <br/> 
 ## Extra procedures
 To facilitate the reproduction of the results, the present root directory contains the converted SBML models that were originally downloaded from the Anguix database ("model.sbml" and "cutmodel.sbml"). However, if one wishes to perform the entire process, the Anguix CSV files can be downloaded by following the instructions provided either in https://github.com/Dynamic-Systems-Biology/Anguix or https://github.com/anthraxodus/Anguix-command-line repositories. To do so, the user needs to execute "Query 1" as mentioned in the README section after selecting the "Danio Rerio" organism and download its data from the Anguix database. Finally, the CSV file can be downloaded by clicking on the "Table" tab, and then on "Export CSV" located in the upper right-hand corner of the query execution result in Neo4j.
+
+<br /> <br/> 
 In possession of the CSV file, the following procedure should be followed to perform the conversion of these files to SBML format (currently only on Linux):
 #### Install C++, in the console:
 - sudo apt update
