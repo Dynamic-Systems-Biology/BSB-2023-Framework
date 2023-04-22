@@ -64,19 +64,23 @@ In possession of the CSV file, the following procedure should be followed to per
 Download the Qt installer from https://www.qt.io/download-qt-installer and execute, in the console:
 - chmod +x qt(...).run
 - /qt(...).run
+
 Follow the steps indicated by the installer, pressing “Agree” and “Continue”. Just be careful with the “Installation folder” section. Do not change the location or name of the directory where Qt will be installed, and check the option “Qt 6… for desktop development”.
 
 <br /> <br/>
 #### Download and install Julia, libNeo4J and libSBML packages for Qt Creator applications
 Access the CSV2SBML repository https://drive.google.com/drive/folders/1Okjj9wAWZTgfKcxt68a8cbY7KtsrsmUl on Google Drive and download the folder “libs”. Extract the files, in the console:
 - unzip libs(...).zip
+
 Open the folder that will be generated and copy each of the directories inside to the opt folder, in the console:
 - cp -R foldername /opt
 
 <br /> <br/>
 #### Download and open the converter application project in Qt Creator
 In the same Google Drive directory as in the previous step, download the folder of one of the two versions of the converter "CSV2SBML" (graphical interface) or "CSV2SBML_CL" (command line). Extract the files, in the console:
-- unzip CSV2SBML(...).zip       
+- unzip CSV2SBML(...).zip 
+      
 In Qt Creator: 
 - Projects – Open
+
 Go to the project’s directory “CSV2SBML(...)” downloaded and open the file “AnguixCSVtoSBML.pro”.
