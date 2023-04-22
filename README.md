@@ -65,6 +65,7 @@ Download the Qt installer from https://www.qt.io/download-qt-installer and execu
 - chmod +x qt(...).run
 - /qt(...).run
 
+
 Follow the steps indicated by the installer, pressing “Agree” and “Continue”. Just be careful with the “Installation folder” section. Do not change the location or name of the directory where Qt will be installed, and check the option “Qt 6… for desktop development”.
 
 <br /> <br/>
