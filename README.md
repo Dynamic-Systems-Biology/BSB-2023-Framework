@@ -94,7 +94,7 @@ Go to the project’s directory “CSV2SBML(...)” downloaded and open the file
 - Access the SBML file in the selected location.
 
 <br /> <br/>
-#### Using the application (Command line)
+#### Using the application (command line)
 - Click in the "Projects" tab, in "Desktop -> Run" check the "Run in terminal" box and return to "Edit" tab.
 - With the project open in Qt Creator, Click on the “Run” button on the lower left.
 - At the command prompt, type/paste the name of the CSV file and press Enter.
