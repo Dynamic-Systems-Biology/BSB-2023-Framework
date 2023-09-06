@@ -128,16 +128,6 @@ module FWmodule
         return bic
     end
     # Calculate combined score
-    function calculate_combined_score(mae, r2, bic)
-        # You can define your own combined scoring function here
-        # For simplicity, let's use a weighted sum of the three metrics
-        w_mae = 1.0
-        w_r2 = 1.0
-        w_bic = 1.0
-        combined_score = w_mae * mae + w_r2 * r2 - w_bic * bic
-        return combined_score
-    end
-    #
     function calculate_metrics(sol_nn1, sol_nn2, X, nn_p, model_param)
     # Calculate metrics for each SBML model
         mae_nn = calculate_mae(Array(sol_nn1), X)
@@ -151,8 +141,8 @@ module FWmodule
         bic_nn2 = calculate_bic(Array(sol_nn2), X, num_parameters_nn2, num_data_points)
 
         # Calculate combined scores
-        combined_score_nn = calculate_combined_score(mae_nn, r2_nn, bic_nn)
-        combined_score_nn2 = calculate_combined_score(mae_nn2, r2_nn2, bic_nn2)
+        combined_score_nn = r2_nn - mae_nn - bic_nn
+        combined_score_nn2 = r2_nn2 - mae_nn2 - bic_nn2
 
         # Compare the results and choose the preferable model based on combined scores
         if combined_score_nn > combined_score_nn2
@@ -161,5 +151,5 @@ module FWmodule
             return "m2"
         end
     end
-    
+    #
 end
