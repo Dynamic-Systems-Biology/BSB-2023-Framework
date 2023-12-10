@@ -116,7 +116,7 @@ module FWmodule
         ss_total = sum((observed .- mean_observed).^2)
         ss_residual = sum((observed .- simulated).^2)
         r2 = 1.0 - ss_residual / ss_total
-        return r2
+        return abs(r2)
     end
 
     # Calculate BIC metric
@@ -127,6 +127,7 @@ module FWmodule
         bic = n * log(residual_sum_of_squares / n) + k * log(n)
         return bic
     end
+    #
     # Calculate combined score
     function calculate_metrics(sol_nn1, sol_nn2, X, nn_p, model_param)
     # Calculate metrics for each SBML model
@@ -141,14 +142,44 @@ module FWmodule
         bic_nn2 = calculate_bic(Array(sol_nn2), X, num_parameters_nn2, num_data_points)
 
         # Calculate combined scores
-        combined_score_nn = r2_nn - mae_nn - bic_nn
-        combined_score_nn2 = r2_nn2 - mae_nn2 - bic_nn2
+        combined_score_nn = 0
+        combined_score_nn2 = 0
 
         # Compare the results and choose the preferable model based on combined scores
+        if mae_nn < mae_nn2
+            combined_score_nn = combined_score_nn + 1
+        elseif mae_nn > mae_nn2
+            combined_score_nn2 = combined_score_nn2 + 1
+        else
+            combined_score_nn2 = combined_score_nn2 + 1
+            combined_score_nn = combined_score_nn + 1
+        end
+        #
+        if bic_nn < bic_nn2
+            combined_score_nn = combined_score_nn + 1
+        elseif bic_nn > bic_nn2
+            combined_score_nn2 = combined_score_nn2 + 1
+        else
+            combined_score_nn2 = combined_score_nn2 + 1
+            combined_score_nn = combined_score_nn + 1
+        end
+        #
+        if r2_nn > r2_nn2
+            combined_score_nn = combined_score_nn + 1
+        elseif r2_nn < r2_nn2
+            combined_score_nn2 = combined_score_nn2 + 1
+        else
+            combined_score_nn2 = combined_score_nn2 + 1
+            combined_score_nn = combined_score_nn + 1
+        end
+    
+        #
         if combined_score_nn > combined_score_nn2
             return "m1"
-        else
+        elseif combined_score_nn2 > combined_score_nn
             return "m2"
+        else
+            return "Draw"
         end
     end
     #
