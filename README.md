@@ -99,3 +99,50 @@ Go to the project’s directory “CSV2SBML(...)” downloaded and open the file
 - At the command prompt, type/paste the name of the CSV file and press Enter.
 - type/paste the path of the directory where you want to store the result and press “Enter”.
 - Wait for the execution and at the end type “Ctrl+c” and “Enter” to close the terminal.
+
+<br /> <br/> 
+# Jupyter notebook block by block tutorial
+<br /> <br/> 
+## Section "Import packages" (code block 1)
+Framework lib and Julia packages import. Just execute.
+<br /> <br/> 
+## Section "Import SBML model" (code blocks 2 to 12)
+Code Block 2: It is necessary to enter the following information: Name of the file that contains the SBML model in line 1, level and version of the SBML file that contains the model in lines 2 and 3 respectively; It is not necessary to change line 4.
+
+Execute from code blocks 3 to 8 without changes. The imported model parameters will be defined and displayed.
+
+Code Block 9 (# Setting the initial concentrations): It is necessary to change the number of species in parentheses in the line "u0 = zeros(...)", putting the total number of species in the model instead of "...".
+It is also necessary to insert the initial value of the species in the model, based on the order in which they are displayed in code block 7 (with the variable "speciesvector"), for example, if the first species showed in block 7 is "specie 0" and the second is "specie 1", then you need to set the line "u0[1] = X" with "X" being the initial value of specie 0 and line "u0[1] = X" with "X" being the initial value of specie 1. To finish, make sure that the line "selected_species = [...]" contains a number for each species in the model.
+
+Execute code block 10 without changes.
+
+Code Block 11 (# Define Params): Based on the SBML file information and the order from the code block 10 display, set the parameters in the line "model_param = Float32.([...])", for example, if the first parameter shown on code block 10 is "Reaction0_Km", search for the value of parameter "Km" on "Reaction0" reaction on the SBML file of the model and insert it first inside the brackets and do the same for the other values.
+
+Execute code blocks 12 and 13 without changes, they will generate time series with a simulation and plot a graph with the results. still only with the ODE'S
+
+<br /> <br/> 
+## Section "Import the cutout model" (code blocks 14 to 20)
+Repeat the same proccess from the blocks 2 to 12, this time with another model, in the preset example, it is a cutout model from the previously defined one.
+On the last block of this set, a graph is plotted comparing the two simulations of the models especies concentration over time.
+
+<br /> <br/> 
+## Section "Turning ODE's into a system of UDE's" (code block 21)
+Code Block 21(# Defining the neural network characteristics): It is necessary to change the number in the lines containing 'Lux.Dense(X, X" by replacing "X" with the number of species in the model. If desired, it is also possible to add or remove lines in the format "Lux.Dense(X, X, Lux.sigmoid)" to change the number of layers of the neural network. There is no need to change the other lines, the last one will generate the system of UDE's.
+
+<br /> <br/> 
+## Section "Training the model with ADAM" (code blocks 22 to 27)
+Code Block 22(# Generating predict and loss functions parameters): It is not necessary to make changes, but if desired it is possible to change abstol, reltol and saveat parameters for specific needs, it is also possible to change the value "VALUE" on line 'X_val = view(X_2, :, VALUE:Z)' thus increasing the size of the training set, if this is done, then the value "VALUE+1" in the line "X_train = view(X_2, :, VALUE+1:N)" must be changed to the new value plus 1. Just like the example.
+
+Code Block 23(# Train with ADAM): In this block, training is carried out with the ADAM algorithm, it is possible to change the number of training iterations in the line "maxiters=X" changing X to the desired number of iterations. It is also possible to use other algorithm instead of ADAM, changing the line 'ADAM(0.1)' to the name of another algorithm in the package, for example 'GradientDescent()'. no more changes are necessary.
+
+Execute code blocks 24 and 25 without changes. they will plot graphs for the losses and the timeseries of the species of the model.
+
+Code blocs 25 and 26(# Get the time indices corresponding to the desired moments): These blocks are responsible for printing concentration values ​​of the model species at the desired moments, the first block is in relation to the model generated at the beginning with the ODE's, and the second block for the model trained with ADAM, to choose the moments to be printed, simply change the values ​​inside the brackets on the second line "desired_moments = [...]".
+
+<br /> <br/> 
+## Section "Training the model with SGD" (code blocks 27 to 31)
+The same procces from the last section is executed but using SGD method for training instead o ADAM.
+
+<br /> <br/> 
+## Section "Model Selection" (code blocks 32 and 33)
+These blocks apply the model selection function to calculate the best model among the last two generated with ADAM and SGD, the first block simply uses the function and displays the result, while the second internally shows the values ​​that led to the result of the function.
